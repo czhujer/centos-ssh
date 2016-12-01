@@ -14,19 +14,14 @@ MAINTAINER James Deathe <james.deathe@gmail.com>
 RUN rpm --import \
 		http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-6 \
 	&& rpm --import \
-		https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6 \
-	&& rpm --import \
-		https://dl.iuscommunity.org/pub/ius/IUS-COMMUNITY-GPG-KEY
+		https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6
 
 # -----------------------------------------------------------------------------
 # Base Install
 # -----------------------------------------------------------------------------
 RUN rpm --rebuilddb \
 	&& yum -y install \
-		centos-release-scl \
-		centos-release-scl-rh \
 		epel-release \
-		https://centos6.iuscommunity.org/ius-release.rpm \
 		vim-minimal-7.4.629-5.el6 \
 		xz-4.999.9-0.5.beta.20091007git.el6.x86_64 \
 		sudo-1.8.6p3-24.el6 \
@@ -68,7 +63,7 @@ RUN easy_install \
 # UTC Timezone & Networking
 # -----------------------------------------------------------------------------
 RUN ln -sf \
-		/usr/share/zoneinfo/UTC \
+		/usr/share/zoneinfo/Europe/Prague \
 		/etc/localtime \
 	&& echo "NETWORKING=yes" > /etc/sysconfig/network
 
